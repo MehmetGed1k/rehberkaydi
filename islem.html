@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Kayıt Ekleme</title>
+  <script>
+    function kayitEkle() {
+      var isim = document.getElementById("isim").value;
+      var soyisim = document.getElementById("soyisim").value;
+      var dil = document.getElementById("dil").value;
+      
+      var kayit = isim + " " + soyisim + " - " + dil + "\n";
+      
+      var xmlhttp = new XMLHttpRequest();
+      xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+          alert("Kayıt başarıyla eklendi!");
+        }
+      };
+      xmlhttp.open("POST", "kayit.txt", true);
+      xmlhttp.send(kayit);
+    }
+  </script>
+</head>
+<body>
+  <h2>Kayıt Ekle</h2>
+  <form>
+    <label for="isim">İsim:</label>
+    <input type="text" id="isim" required><br><br>
+    <label for="soyisim">Soyisim:</label>
+    <input type="text" id="soyisim" required><br><br>
+    <label for="dil">Dil Bilgisi:</label>
+    <input type="text" id="dil" required><br><br>
+    <input type="button" value="Kaydet" onclick="kayitEkle()">
+  </form>
+</body>
+</html>
